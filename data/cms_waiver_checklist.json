@@ -1,0 +1,42 @@
+[
+    {
+        "id": "CMS-W-01",
+        "category": "In-Person Visits",
+        "requirement": "Minimum of one daily in-person visit by a registered nurse or paramedic.",
+        "status": "met",
+        "notes": "Registered via EMR geo-fencing timestamp.",
+        "weight": "CRITICAL"
+    },
+    {
+        "id": "CMS-W-02",
+        "category": "Physician Evaluaton",
+        "requirement": "Daily telehealth or in-person evaluation by a physician or advanced practice provider.",
+        "status": "met",
+        "notes": "Telehealth logs synced with Zoom Health API.",
+        "weight": "CRITICAL"
+    },
+    {
+        "id": "CMS-W-03",
+        "category": "Telemetry Monitoring",
+        "requirement": "Continuous or scheduled telemetry monitoring appropriate for the patient's condition.",
+        "status": "at_risk",
+        "notes": "Patient HAH-1015 dropped below 80% device uptime.",
+        "weight": "HIGH"
+    },
+    {
+        "id": "CMS-W-04",
+        "category": "Emergency Response",
+        "requirement": "Ability to escalate and transfer to inpatient facility within 30 minutes.",
+        "status": "met",
+        "notes": "Ambulance vendor SLA currently at 18 minutes average.",
+        "weight": "CRITICAL"
+    },
+    {
+        "id": "CMS-W-05",
+        "category": "Patient Consent",
+        "requirement": "Signed patient consent acknowledging Hospital-at-Home enrollment and alternatives.",
+        "status": "met",
+        "notes": "100% of active census has signed PDFs on file.",
+        "weight": "HIGH"
+    }
+]
