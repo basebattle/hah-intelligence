@@ -80,10 +80,10 @@ COLOR_MAP = {
     "Low-Medium": "#a3e635", "Low": "#4ade80",
 }
 
-st.markdown("""
+st.html("""
 <div class="page-header">🩻 Patient Detail &amp; Intelligence</div>
 <p class="page-sub">Select a patient to view full vitals, NEWS2 breakdown, and AI risk synthesis.</p>
-""", unsafe_allow_html=True)
+""")
 
 if "patients" not in st.session_state:
     st.session_state.patients = get_base_patients()
@@ -102,7 +102,7 @@ risk_color = COLOR_MAP.get(news2_res["color"], "#fff")
 rag_color  = COLOR_MAP.get(rag_res.get("final_color", "Green"), "#4ade80")
 
 # ── Condition banner ──────────────────────────────────────────────────────────
-st.markdown(f"""
+st.html(f"""
 <div class="condition-banner">
     <div class="condition-banner-icon">
         <span style="animation:{anim}; display:inline-block;">{icon}</span>
@@ -116,14 +116,14 @@ st.markdown(f"""
         </div>
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
 col_left, col_right = st.columns([3, 2], gap="large")
 
 with col_left:
     st.markdown("#### Current Vitals")
     v = p["vitals"]
-    st.markdown(f"""
+    st.html(f"""
 <div class="vital-grid">
     <div class="vital-card">
         <div class="vital-val">{v['heart_rate']}</div>
@@ -156,7 +156,7 @@ with col_left:
         <div class="vital-label">Consciousness<br>ACVPU</div>
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
     st.markdown("#### NEWS2 Parameter Breakdown")
     bd   = news2_res["breakdown"]
@@ -168,13 +168,13 @@ with col_left:
             <div class="news2-param">{param}</div>
         </div>"""
     html += "</div>"
-    st.markdown(html, unsafe_allow_html=True)
+    st.html(html)
 
     st.markdown("#### Latest Clinical Notes")
-    st.markdown(f'<div class="notes-card">{p["clinical_notes"]}</div>', unsafe_allow_html=True)
+    st.html(f'<div class="notes-card">{p["clinical_notes"]}</div>')
 
 with col_right:
-    st.markdown(f"""
+    st.html(f"""
 <div class="ai-panel">
     <div class="ai-title">🤖 AI Analysis Engine</div>
 
@@ -211,7 +211,7 @@ with col_right:
         {rag_res.get('rag_reasoning','—')}
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
     fig = go.Figure(go.Indicator(
         mode="gauge+number",

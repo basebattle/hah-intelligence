@@ -65,15 +65,15 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"] {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
+st.html("""
 <div class="page-header">📋 CMS Waiver Compliance</div>
 <p class="page-sub">
     Acute Hospital Care at Home &nbsp;·&nbsp; Real-time protocol tracking
     &nbsp;·&nbsp; 10 core AHCaH waiver requirements
 </p>
-""", unsafe_allow_html=True)
+""")
 
-st.markdown("""
+st.html("""
 <div style="background:var(--surface2); border:1px solid var(--teal-border); border-radius:12px;
             padding:1rem 1.25rem; margin-bottom:1.5rem; font-size:0.83rem; color:var(--muted); line-height:1.6;">
     The <strong style="color:var(--text);">CMS Acute Hospital Care at Home</strong> programme requires strict
@@ -82,7 +82,7 @@ st.markdown("""
     <strong style="color:var(--red);">Failed</strong> items require immediate remediation to maintain
     programme standing.
 </div>
-""", unsafe_allow_html=True)
+""")
 
 
 @st.cache_data
@@ -104,7 +104,7 @@ for w in waivers:
 total   = len(waivers)
 pct_met = int(counts["met"] / total * 100) if total else 0
 
-st.markdown(f"""
+st.html(f"""
 <div class="summary-cards">
     <div class="summary-card met">
         <div class="summary-num met">{counts['met']}</div>
@@ -123,7 +123,7 @@ st.markdown(f"""
         <div class="summary-label">Overall Compliance</div>
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
 # ── Protocol list ─────────────────────────────────────────────────────────────
 st.markdown("### Protocol Status")
@@ -140,7 +140,7 @@ for w in waivers:
     rem    = ('<div class="remediation">⚠️ Immediate remediation required to maintain CMS waiver standing.</div>'
               if s != "met" else "")
 
-    st.markdown(f"""
+    st.html(f"""
 <div class="protocol-card {cls}">
     <div class="protocol-status-icon">{icon}</div>
     <div style="flex:1;">
@@ -157,12 +157,12 @@ for w in waivers:
         {rem}
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
-st.markdown("""
+st.html("""
 <p style="font-size:0.73rem; color:rgba(255,255,255,0.25); margin-top:1rem;
           font-family:'JetBrains Mono',monospace;">
     CMS Acute Hospital Care at Home Waiver &nbsp;·&nbsp; 42 CFR §412.65
     &nbsp;·&nbsp; Automated compliance monitoring
 </p>
-""", unsafe_allow_html=True)
+""")

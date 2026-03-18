@@ -40,12 +40,12 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"] {
 """, unsafe_allow_html=True)
 
 # ── Header ────────────────────────────────────────────────────────────────────
-st.markdown("""
+st.html("""
 <div class="page-header">👥 Active Census Monitor</div>
 <p class="page-sub">
     Live 20-patient cohort &nbsp;·&nbsp; NEWS2 risk stratification &nbsp;·&nbsp;
     Real-time telemetry &nbsp;·&nbsp; <em>Refresh to simulate new vitals</em>
-</p>""", unsafe_allow_html=True)
+</p>""")
 
 if "patients" not in st.session_state:
     st.session_state.patients = get_base_patients()
@@ -55,7 +55,7 @@ with col_btn:
     if st.button("🔄 Refresh Vitals Telemetry"):
         st.session_state.patients = run_simulation(st.session_state.patients)
 
-st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+st.html('<div class="divider"></div>')
 
 # ── Build dataframe ───────────────────────────────────────────────────────────
 display_data = []
@@ -90,7 +90,7 @@ for p in st.session_state.patients:
 df = pd.DataFrame(display_data)
 
 # ── Risk cards ────────────────────────────────────────────────────────────────
-st.markdown(f"""
+st.html(f"""
 <div class="risk-cards">
     <div class="risk-card red">
         <div class="risk-num red">{metrics['Red']}</div>
@@ -105,7 +105,7 @@ st.markdown(f"""
         <div class="risk-label">🟢 Stable — Routine</div>
     </div>
 </div>
-""", unsafe_allow_html=True)
+""")
 
 # ── Row styler ────────────────────────────────────────────────────────────────
 risk_col  = df.columns.get_loc("Risk")
@@ -133,9 +133,9 @@ st.dataframe(
     height=620,
 )
 
-st.markdown("""
+st.html("""
 <p style="font-size:0.73rem; color:rgba(255,255,255,0.28); margin-top:0.4rem;
           font-family:'JetBrains Mono',monospace;">
 NEWS2 ≥7 or single parameter 3 → RED &nbsp;·&nbsp; 5–6 → AMBER &nbsp;·&nbsp;
 1–4 → YELLOW &nbsp;·&nbsp; 0 → GREEN
-</p>""", unsafe_allow_html=True)
+</p>""")
